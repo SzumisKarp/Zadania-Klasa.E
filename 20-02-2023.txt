@@ -1,0 +1,183 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TP.POb_na_20._02._2023
+{
+    class Customer_Types
+    {
+        private string Customer_Types_code;
+        private string Customer_Types_description;
+        public Customer_Types(string Customer_Types_code, string Customer_Types_description)
+        {
+            this.Customer_Types_code = Customer_Types_code;
+            this.Customer_Types_description = Customer_Types_description;
+        }
+    }
+    class Customers
+    {
+        private int Customer_ID;
+        private string Customer_Name;
+        private string Customer_Surname;
+        private int Customer_phone;
+        private string Customer_email;
+        public string date_became_customer;
+        private string login;
+        private string password;
+        public string other_details;
+        private Customer_Types Customers_Types_code;
+        public Customers(int Customers_ID, string Customer_Name, string Customer_Surname, int Customer_phone, string Customer_email)
+        {
+            this.Customer_ID = Customers_ID;
+            this.Customer_Name = Customer_Name;
+            this.Customer_Surname = Customer_Surname;
+            this.Customer_phone = Customer_phone;
+            this.Customer_email = Customer_email;
+        }
+        public void setLoginPass(string login, string password)
+        {
+            this.login = login;
+            this.password = password;
+        }
+        public Customer_Types getCustomer_Types_code()
+        {
+            return this.Customers_Types_code;
+        }
+    }
+    class Merchants
+    {
+        private int Merchant_ID;
+        private string Merchants_Name;
+        private string Merchants_Surname;
+        private int Merchants_phone;
+        private string Merchants_email;
+        public string other_details;
+        public Merchants(int Merchants_ID, string Merchants_Name, string Merchants_Surname, int Merchants_phone, string Merchants_email)
+        {
+            this.Merchant_ID = Merchants_ID;
+            this.Merchants_Name = Merchants_Name;
+            this.Merchants_Surname = Merchants_Surname;
+            this.Merchants_phone = Merchants_phone;
+            this.Merchants_email = Merchants_email;
+        }
+    }
+    class Products_and_services
+    {
+        private string Products_and_services_code;
+        private string Products_and_services_description;
+        private Merchants Merchant_ID;
+        public Products_and_services(string Products_and_services_code, string Products_and_services_description)
+        {
+            this.Products_and_services_code = Products_and_services_code;
+            this.Products_and_services_description = Products_and_services_description;
+        }
+        public Merchants getMerchant()
+        {
+            return this.Merchant_ID;
+        }
+    }
+    class Customers_Purchase
+    {
+        private int Purchase_ID;
+        private string Date;
+        private float Quantity;
+        public string Other_details;
+        private Customers Customers_ID;
+        private Products_and_services Product_and_services_code;
+        public Customers_Purchase(int Purschase_ID, string Date, float Quantity)
+        {
+            this.Purchase_ID = Purschase_ID;
+            this.Date = Date;
+            this.Quantity = Quantity;
+        }
+        public Customers getCustomers_ID()
+        {
+            return this.Customers_ID;
+        }
+        public Products_and_services getProducts_And_Services_code()
+        {
+            return this.Product_and_services_code;
+        }
+    }
+    class Account_Types
+    {
+        private string Account_Types_code;
+        private string Account_Types_description;
+        public Account_Types(string Account_Types_code, string Account_Types_description)
+        {
+            this.Account_Types_code = Account_Types_code;
+            this.Account_Types_description = Account_Types_description;
+        }
+    }
+    class Accounts
+    {
+        private int Accounts_ID;
+        private string Accounts_Name;
+        private string Accounts_Surname;
+        private string date_opened;
+        public string other_account_details;
+        private Account_Types Account_Types_code;
+        private Customers Customers_ID;
+        public Accounts(int Accounts_ID, string Accounts_Name, string Accounts_Surname, string date_opened)
+        {
+            this.Accounts_ID = Accounts_ID;
+            this.Accounts_Name = Accounts_Name;
+            this.Accounts_Surname = Accounts_Surname;
+            this.date_opened = date_opened;
+        }
+        public Account_Types getAccount_Types_code()
+        {
+            return this.Account_Types_code;
+        }
+        public Customers getCustomers_ID()
+        {
+            return this.Customers_ID;
+        }
+    }
+    class Transaction_Types
+    {
+        private string Transaction_Type_code;
+        private string Transaction_Type_description;
+        public Transaction_Types(string Transaction_Types_code, string Transaction_Types_description)
+        {
+            this.Transaction_Type_code = Transaction_Types_code;
+            this.Transaction_Type_description = Transaction_Types_description;
+        }
+    }
+    class Transactions
+    {
+        private int Transactions_ID;
+        private string date;
+        private float amount_of_transaction;
+        public string other_details;
+        private Customers_Purchase Purchase_ID;
+        private Accounts Account_ID;
+        private Transaction_Types Transaction_Types_code;
+        public Transactions(int Transactions_ID, string date, float amount_of_transaction)
+        {
+            this.Transactions_ID = Transactions_ID;
+            this.date = date;
+            this.amount_of_transaction = amount_of_transaction;
+        }
+        public Customers_Purchase getPurchase_ID()
+        {
+            return this.Purchase_ID;
+        }
+        public Accounts getAccount_ID()
+        {
+            return this.Account_ID;
+        }
+        public Transaction_Types getTransaction_Types_code()
+        {
+            return this.Transaction_Types_code;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+        }
+    }
+}
