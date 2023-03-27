@@ -1,0 +1,89 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp8
+{
+    abstract class lekarz
+    {
+        public string imie { get; set; }
+        public string nazwisko { get; set; }
+        abstract public string czyLekarz(bool prawda);
+        abstract public void poziomZaawansowania();
+    }
+    class kardiolog : lekarz
+    {
+        public override void poziomZaawansowania()
+        {
+            Console.WriteLine("Poziom: kardiolog [pod ordynator]");
+        }
+        public override string czyLekarz(bool prawda)
+        {
+            if (prawda == false)
+                return "nie jest lekarzem";
+            return "jest lekarzem";
+        }
+    }
+    class ordynator : lekarz
+    {
+        public override void poziomZaawansowania()
+        {
+            Console.WriteLine("Poziom: ordynator [nad kardiolog]");
+        }
+        public override string czyLekarz(bool prawda)
+        {
+            if (prawda == false)
+                return "nie jest lekarzem";
+            return "jest lekarzem";
+        }
+        public string obecnyOrdynator(bool a)
+        {
+            if (a == false)
+                return "nieobecny ordynator";
+            return "obecny ordynator";
+        }
+    }
+    class oddział_wewnetrzny : ordynator
+    {
+        public string numerOdziału { get; set; }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // kardiolog
+
+            kardiolog kardiolog1 = new kardiolog();
+            kardiolog1.imie = "Mateusz";
+            Console.WriteLine(kardiolog1.imie);
+
+            kardiolog1.nazwisko = "Zawacki";
+            Console.WriteLine(kardiolog1.nazwisko);
+
+            kardiolog1.poziomZaawansowania();
+            Console.WriteLine(kardiolog1.czyLekarz(true));
+
+            // ordynator
+
+            ordynator ordynator1 = new ordynator();
+            ordynator1.imie = "Aleksander";
+            Console.WriteLine(ordynator1.imie);
+
+            ordynator1.nazwisko = "Łukaszewicz";
+            Console.WriteLine(ordynator1.nazwisko);
+
+            ordynator1.poziomZaawansowania();
+            Console.WriteLine(ordynator1.czyLekarz(true));
+
+            // odział wewnętrzny
+
+            oddział_wewnetrzny oddział_Wewnetrzny1 = new oddział_wewnetrzny();
+            oddział_Wewnetrzny1.obecnyOrdynator(true);
+
+            //-------------------------------------------------
+            Console.ReadKey();
+        }
+    }
+}
